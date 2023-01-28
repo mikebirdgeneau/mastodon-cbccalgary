@@ -1,0 +1,36 @@
+[mastodon]
+client_key=<your client key>
+client_secret=<your client secret>
+client_token=<your client token>
+account_id=<your account id / username>
+base_url="https://mstdn.ca"
+api_url="https://mstdn.ca"
+redirect_url="https://mstdn.ca"
+visibility="unlisted"
+
+[[feeds]]
+label="CBC Calgary"
+url="https://rss.cbc.ca/lineup/canada-calgary.xml"
+
+[[content_warnings]]
+label="Death"
+phrases=["murder", "killing", "death", "suicide", "die", "kill", "killed", "fatal", "genocide", "shooting", "human remains", "homicide"]
+
+[[content_warnings]]
+label="Violence"
+phrases=["violence","attacked","stabbed","stabbing","shooting","shot"]
+
+[[content_warnings]]
+label="Sexual Assault"
+phrases=["sexually assaulted","sexually assaulted","sexual assault"]
+
+
+[filters]
+hashtags = ["calgary", "edmonton", "alberta","canada", "news", "covid19"]
+
+
+[persistence]
+database_path = "cbccalgary.db"
+
+
+
