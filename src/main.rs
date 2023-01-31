@@ -204,7 +204,7 @@ fn main() {
 
             // ensure we stay under the max status length
             stripped_description = truncate(&stripped_description, MAX_DESCRIPTION_LENGTH).to_owned();
-            let post_length = format!("{}\n{}\n{}\n\nSource: {}", this_title, stripped_description, this_url, feed.label).len();
+            let post_length = format!("{}\n{}\n{}", this_title, stripped_description, this_url).len();
             if post_length > MAX_STATUS_LENGTH {
                 let diff = post_length - MAX_STATUS_LENGTH;
                 println!("Post length is {}, which is {} characters too long. Truncating.", post_length, diff);
@@ -214,14 +214,14 @@ fn main() {
             // title, link, description, content warning
             let status = if let Some(tw) = trigger_labels {
                 StatusBuilder::new()
-                    .status(format!("{}\n{}\n{}\nSource: {}", this_title, stripped_description, this_url, feed.label))
+                    .status(format!("{}\n{}\n{}", this_title, stripped_description, this_url))
                     .sensitive(false)
                     .spoiler_text(format!("CW: {}", tw.into_iter().collect::<Vec<String>>().join(",")))
                     .visibility(post_visibility)
                     .language(Language::Eng).build().unwrap()
             } else {
                 StatusBuilder::new()
-                    .status(format!("{}\n{}\n{}\nSource: {}", this_title, stripped_description, this_url, feed.label))
+                    .status(format!("{}\n{}\n{}", this_title, stripped_description, this_url))
                     .sensitive(false)
                     .visibility(post_visibility)
                     .language(Language::Eng).build().unwrap()
